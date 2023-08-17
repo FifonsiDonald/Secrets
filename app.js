@@ -10,6 +10,8 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook");
 const findOrCreate = require("mongoose-findorcreate");
+const path = require("path");
+
 
 // const bcrypt = require("bcrypt");
 // const saltRounds = 10;
@@ -19,8 +21,9 @@ const findOrCreate = require("mongoose-findorcreate");
 
 const app = express();
 
-app.use(express.static("public"));
+app.use(express.static("src/public"));
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src", "views"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
